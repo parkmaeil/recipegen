@@ -22,8 +22,8 @@ import java.util.Map;
 public class RecipeService {
 
     private final ChatModel chatModel;
-    private final String googleApiKey = "AIzaSyCUCsGUIsRizNLKUWjNt-IWFjGLRDoNw48";  // Google API 키를 입력하세요
-    private final String googleCx = "2261514c6d6474586"; // Google Custom Search Engine CX 키를 입력하세요
+    private final String googleApiKey = "Google API 키를 입력하세요";  // Google API 키를 입력하세요
+    private final String googleCx = "Google Custom Search Engine CX 키를 입력하세요"; // Google Custom Search Engine CX 키를 입력하세요
     private final RestTemplate restTemplate = new RestTemplate();
     public RecipeService(ChatModel chatModel) {
         this.chatModel = chatModel;
@@ -39,9 +39,9 @@ public class RecipeService {
     """;
         PromptTemplate promptTemplate = new PromptTemplate(template);
         Map<String, Object> params = Map.of(
-                "ingredients", recipe.getIngredients(),
-                "cuisine", recipe.getCuisine(),
-                "dietaryRestrictions", recipe.getDietaryRestrictions()
+                "ingredients", recipe.getIngredients(), // 재료
+                "cuisine", recipe.getCuisine(), // 요리
+                "dietaryRestrictions", recipe.getDietaryRestrictions() // 식이제한
         );
 
         Prompt prompt = promptTemplate.create(params);
