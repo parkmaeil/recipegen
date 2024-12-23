@@ -110,17 +110,17 @@
 
             const data = await response.json();
 
-            // URL 목록을 HTML 형식으로 생성
-            const urlsHtml = data.urls && data.urls.length > 0
-                ? data.urls.map(url => `<li><a href="${url}" target="_blank">${url}</a></li>`).join('')
-                : '<li>참고할 수 있는 웹사이트가 없습니다.</li>';
-
-            // 로딩 메시지 숨기기
+           // 로딩 메시지 숨기기
             document.getElementById('loadingMessage').style.display = 'none';
 
             // 레시피와 URL을 출력
             document.getElementById('recipeOutput').innerText = `${data.recipe}`;
             document.getElementById('recipeOutput').style.display = 'block';
+
+            // URL 목록을 HTML 형식으로 생성
+            const urlsHtml = data.urls && data.urls.length > 0
+                ? data.urls.map(url => `<li><a href="${url}" target="_blank">${url}</a></li>`).join('')
+                : '<li>참고할 수 있는 웹사이트가 없습니다.</li>';
 
             document.getElementById('recipeUrl').innerHTML = `<h4>참고할 수 있는 웹사이트</h4><ul>${urlsHtml}</ul>`;
             document.getElementById('recipeUrl').style.display = 'block';
